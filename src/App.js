@@ -7,12 +7,12 @@ class App extends Component {
 
     this.state = {
       personal: {
-        first: {stored: '', text: ''}, 
-        last: {stored: '', text: ''},
-        address: {stored: '', text: ''}, 
-        phone: {stored: '', text: ''}, 
-        email: {stored: '', text: ''}, 
-        description: {stored: '', text: ''}
+        first: '', 
+        last: '', 
+        address: '',
+        phone: '',
+        email: '',
+        description: ''
       },
       education: [],
       experience: []
@@ -23,8 +23,7 @@ class App extends Component {
     return (
       <div className='app'>
         <Header />
-        <Form />
-          
+        <Form education={this.state.education} experience={this.state.experience} />
       </div>
     )
   }
@@ -39,13 +38,30 @@ class Header extends Component {
 }
 
 class Form extends Component {
+  constructor(props) {
+    super(props)
+
+    this.onAdd = this.onAdd.bind(this);
+    this.onDel = this.onDel.bind(this);
+  }
+
+  onAdd = (e) => {
+    e.preventDefault()
+    console.log("Tomato Soup")
+  }
+
+  onDel = (e) => {
+    e.preventDefault()
+    console.log("Chicken Noodle Soup")
+
+  }
+
   render() {
     return (
       <div className='form-holder'>
         <PersonalInfo />
-        <Education />
-        <Experience />
-
+        <Education add={this.onAdd} del={this.onDel} />
+        <Experience add={this.onAdd} del={this.onDel} />
       </div>
     )
   }
@@ -57,6 +73,7 @@ class PersonalInfo extends Component {
   }
 
   render() {
+  
     return (
       <form className='personal-form'>
         <h3>Personal Information</h3>
@@ -75,8 +92,11 @@ class Education extends Component {
   constructor(props) {
     super(props)
   }
-
+  
   render() {
+
+    const { del, add } = this.props;
+
     return (
       <form className='education-form'>
         <h3>Education</h3>
@@ -86,8 +106,8 @@ class Education extends Component {
         <input type="text" id="subjectInput" placeholder="Subject" />
         <input type="text" id="degreeStartedInput" placeholder="Started" />
         <input type="text" id="degreeEndedInput" placeholder="Finished" />
-        <button className='remove' type='button'>Remove</button>
-        <button className='add' type='submit'>Add</button>
+        <button onClick={del} className='remove' type='button'>Remove</button>
+        <button onClick={add} className='add' type='submit'>Add</button>
       </form>
     )
   }
@@ -99,6 +119,9 @@ class Experience extends Component {
   }
 
   render() {
+    
+    const { del, add } = this.props;
+
     return (
       <form className='experience-form'>
         <h3>Experience</h3>
@@ -107,8 +130,8 @@ class Experience extends Component {
         <input type="text" id="cityInput" placeholder="City" />
         <input type="text" id="startedInput" placeholder="Started" />
         <input type="text" id="finishedInput" placeholder="Finished" />
-        <button className='remove' type='button'>Remove</button>
-        <button className='add' type='submit'>Add</button>
+        <button onClick={del} className='remove' type='button'>Remove</button>
+        <button onClick={add} className='add' type='submit'>Add</button>
       </form>
     )
   }

@@ -5,36 +5,20 @@
   padding: 0;
 }
 
-:root {
-  --background-color-alt: rgb(232, 232, 233);
-}
-
 input, button {
-  height: 1.75rem;
+  height: 2rem;
   border-radius: .25rem;
   padding-left: .5rem;
+  font-size: .875rem;
   border: none;
 }
 
-button.remove {
-  opacity: .8;
-  background-color: rgb(255, 95, 95);
-}
-
-button.remove:hover {
- opacity: 1; 
-}
-
-button.add {
-  opacity: .8;
-  background-color: rgb(75, 206, 75);
-}
-
-button.add:hover {
-  opacity: 1;
+textarea, input {
+  outline: none;
 }
 
 textarea {
+  font-size: .875rem;
   border-radius: .25rem;
   padding-left: .48rem;
   padding-top: .4rem;
@@ -42,8 +26,28 @@ textarea {
   border: none;
 }
 
+input:focus {
+  border: none;
+}
+
 button {
+  color: white;
+  opacity: .8;
+  font-weight: 500;
   cursor: pointer;
+}
+
+button.remove {
+  background-color: rgb(255, 95, 95);
+}
+
+button.add {
+  background-color: rgb(75, 206, 75);
+}
+
+button.remove:hover,
+button.add:hover {
+ opacity: 1; 
 }
 
 .app { 
@@ -58,8 +62,8 @@ button {
   width: 100%;
   text-align: center;
   padding: 2rem 0;
-  background-color: rgb(85, 95, 114);
-  color: white;
+  background-color: rgb(103, 115, 137);
+  color: rgb(255, 255, 255);
 }
 
 .form-holder {
@@ -67,7 +71,7 @@ button {
   flex-direction: column;
   gap: 2rem;
   justify-self: center;
-  padding: 1rem;
+  padding: 1.25rem;
   width: 800px;
   margin: 1rem 0;
   background-color: rgb(232, 232, 233);
