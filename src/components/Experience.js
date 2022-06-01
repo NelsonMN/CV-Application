@@ -1,55 +1,44 @@
 import React, { Component } from "react";
+import uniqid from 'uniqid';
 
 class Experience extends Component {
     constructor(props) {
       super(props)
-  
-      this.state = {
-        position: '',
-        company: '',
-        city: '',
-        started: '',
-        finished: '',
-      }
 
-      this.onAdd = this.onAdd.bind(this);
-      this.onDel = this.onDel.bind(this);
-      this.handleChange = this.handleChange.bind(this);
+    //   this.handleChange = this.handleChange.bind(this);
     }  
 
-    handleChange(e) {
-        const value = e.target.value
-        this.setState({
-            [e.target.name]: value
-        })
-    }
-
-    onAdd = (e) => {
-      e.preventDefault()
-      console.log("Tomato Soup")
-      console.log(e.target.cock)
-    }
-  
-    onDel = (e) => {
-      e.preventDefault()
-      console.log("Chicken Noodle Soup")
-    }
+    // handleChange(e) {
+    //     const value = e.target.value
+    //     this.setState({
+    //         [e.target.name]: value
+    //     })
+    // }
 
     render() {
-        const { position, company, city, started, finished } = this.state
+        const { experiences, addBtn, delBtn} = this.props
+        
+        if (experiences.length === 0) {
+            return <button key={uniqid()} name="experience" onClick={addBtn} className='add' type='submit'>Add</button>
+        } else {
+            return (
+                experiences.map((experience) => {
+                    return (
+                        <form key={experience.id} className='experience-form'>
+                            <input type="text" /*value={position}*/ name="position" placeholder="Title" />
+                            <input type="text" /*value={company}*/ name="company" placeholder="Company" />
+                            <input type="text" /*value={city}*/ name="city" placeholder="City" />
+                            <input type="text" /*value={started}*/ name="started" placeholder="Started" />
+                            <input type="text" /*value={finished}*/ name="finished" placeholder="Finished" />
+                            <button name="experience" id={experience.id} onClick={delBtn} className='remove' type='button'>Remove</button>
+                            <button name="experience" onClick={addBtn} className='add' type='submit'>Add</button>
+                        </form>
+                    )
+                })
+            )
+        }
 
-        return (
-        <form className='experience-form'>
-            <h3>Experience</h3>
-            <input type="text" cock='234234' value={position} name="position" onChange={this.handleChange} placeholder="Title" />
-            <input type="text" value={company} name="company" onChange={this.handleChange} placeholder="Company" />
-            <input type="text" value={city} name="city" onChange={this.handleChange} placeholder="City" />
-            <input type="text" value={started} name="started" onChange={this.handleChange} placeholder="Started" />
-            <input type="text" value={finished} name="finished" onChange={this.handleChange} placeholder="Finished" />
-            <button onClick={this.onDel} className='remove' type='button'>Remove</button>
-            <button onClick={this.onAdd} className='add' type='submit'>Add</button>
-        </form>
-        )
+        
     }
   }
 
