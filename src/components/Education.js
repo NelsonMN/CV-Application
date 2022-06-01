@@ -2,10 +2,6 @@ import React, { Component } from "react";
 import uniqid from "uniqid";
 
 class Education extends Component {
-    constructor(props) {
-      super(props)
-    }
-
     render() {
 
       const { education, addBtn, delBtn } = this.props

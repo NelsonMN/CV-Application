@@ -2,11 +2,8 @@ import React, { Component } from "react";
 import uniqid from 'uniqid';
 
 class Experience extends Component {
-    constructor(props) {
-      super(props)
-
     //   this.handleChange = this.handleChange.bind(this);
-    }  
+
 
     // handleChange(e) {
     //     const value = e.target.value
