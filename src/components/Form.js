@@ -3,7 +3,6 @@ import PersonalInfo from "./PersonalInfo";
 import Education from './Education';
 import Experience from './Experience';
 
-
 class Form extends Component {
     
     render() {

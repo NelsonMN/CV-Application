@@ -5,16 +5,29 @@ class Experience extends Component {
       super(props)
   
       this.state = {
-        experience: []
+        position: '',
+        company: '',
+        city: '',
+        started: '',
+        finished: '',
       }
 
       this.onAdd = this.onAdd.bind(this);
       this.onDel = this.onDel.bind(this);
+      this.handleChange = this.handleChange.bind(this);
     }  
+
+    handleChange(e) {
+        const value = e.target.value
+        this.setState({
+            [e.target.name]: value
+        })
+    }
 
     onAdd = (e) => {
       e.preventDefault()
       console.log("Tomato Soup")
+      console.log(e.target.cock)
     }
   
     onDel = (e) => {
@@ -23,19 +36,20 @@ class Experience extends Component {
     }
 
     render() {
-  
-      return (
+        const { position, company, city, started, finished } = this.state
+
+        return (
         <form className='experience-form'>
-          <h3>Experience</h3>
-          <input type="text" id="positionInput" placeholder="Title" />
-          <input type="text" id="companyInput" placeholder="Company" />
-          <input type="text" id="cityInput" placeholder="City" />
-          <input type="text" id="startedInput" placeholder="Started" />
-          <input type="text" id="finishedInput" placeholder="Finished" />
-          <button onClick={this.onDel} className='remove' type='button'>Remove</button>
-          <button onClick={this.onAdd} className='add' type='submit'>Add</button>
+            <h3>Experience</h3>
+            <input type="text" cock='234234' value={position} name="position" onChange={this.handleChange} placeholder="Title" />
+            <input type="text" value={company} name="company" onChange={this.handleChange} placeholder="Company" />
+            <input type="text" value={city} name="city" onChange={this.handleChange} placeholder="City" />
+            <input type="text" value={started} name="started" onChange={this.handleChange} placeholder="Started" />
+            <input type="text" value={finished} name="finished" onChange={this.handleChange} placeholder="Finished" />
+            <button onClick={this.onDel} className='remove' type='button'>Remove</button>
+            <button onClick={this.onAdd} className='add' type='submit'>Add</button>
         </form>
-      )
+        )
     }
   }
 
