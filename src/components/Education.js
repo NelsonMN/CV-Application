@@ -7,7 +7,7 @@ class Education extends Component {
       const { education, addBtn, delBtn } = this.props
 
       if (education.length === 0) {
-        return <button id={uniqid()} key={uniqid} name="education" onClick={addBtn} className='add' type='submit'>Add</button>
+        return <button key={uniqid} name="education" onClick={addBtn} className='add' type='submit'>Add</button>
       } else {
         return (education.map((achievement) => {
             return (

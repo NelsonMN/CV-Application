@@ -11,19 +11,34 @@ class Form extends Component {
     super(props)
 
     this.state = {
+      personal: {
+        first: '', 
+        last: '', 
+        address: '',
+        phone: '',
+        email: '',
+        description: ''
+      },
       achievement: {
         id: uniqid()
       },
       education: [],
-
       experience: {
         id: uniqid()
       },
       experiences: [],
     }
     
+    this.handleChange = this.handleChange.bind(this);
     this.onAdd = this.onAdd.bind(this);
     this.onDel = this.onDel.bind(this);
+  }
+
+  handleChange(e) {
+    const value = e.target.value
+    this.setState(
+      {personal: {...this.state.personal, [e.target.name]: value}}
+    )
   }
   
   onAdd(e) {
@@ -59,12 +74,12 @@ class Form extends Component {
   
   render() {
 
-    const { education, experiences } = this.state;
+    const { personal, education, experiences } = this.state;
 
     return (
       <div className='form-holder'>
         <FormTitle title='Personal Information' />
-        <PersonalInfo />
+        <PersonalInfo personal={personal} handleChange={this.handleChange} />
         <FormTitle title='Education' />
         <Education education={education} addBtn={this.onAdd} delBtn={this.onDel}/>
         <FormTitle title='Experience' />
