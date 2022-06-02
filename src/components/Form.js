@@ -3,6 +3,7 @@ import PersonalInfo from "./PersonalInfo";
 import Education from './Education';
 import Experience from './Experience';
 import FormTitle from "./FormTitle";
+import Add from "./Add"
 import uniqid from "uniqid";
 
 class Form extends Component {
@@ -41,6 +42,8 @@ class Form extends Component {
     }
 
     this.handleParentChange = this.handleParentChange.bind(this);
+    this.handleEduChange = this.handleEduChange.bind(this);
+    this.handleExpChange = this.handleEduChange.bind(this);
     this.onAdd = this.onAdd.bind(this);
     this.onDel = this.onDel.bind(this);
   }
@@ -53,17 +56,31 @@ class Form extends Component {
   }
   
   handleEduChange(e) {
-    const value = e.target.value
-    this.setState(
-      {achievement: {...this.state.achievement, [e.target.name]: value}}
-    )
+    const targetId = e.target.closest('.education-form').id
+    const targetInput = e.target.name
+
+    this.setState((prevState) => ({
+      education: prevState.education.map((eduEntry) => {
+        if (eduEntry.id !== targetId) return eduEntry;
+        const eduEntryClone = { ...eduEntry }
+        eduEntryClone[targetInput] = e.target.value;
+        return eduEntryClone
+      })
+    }))
   }
 
   handleExpChange(e) {
-    const value = e.target.value
-    this.setState(
-      {experience: {...this.state.achievement, [e.target.name]: value}}
-    )
+    const targetId = e.target.closest('.experience-form').id
+    const targetInput = e.target.name
+
+    this.setState((prevState) => ({
+      experience: prevState.experience.map((expEntry) => {
+        if (expEntry.id !== targetId) return expEntry;
+        const expEntryClone = { ...expEntry }
+        expEntryClone[targetInput] = e.target.value;
+        return expEntryClone
+      })
+    }))
   }
   
   onAdd(e) {
@@ -76,8 +93,10 @@ class Form extends Component {
           city: '',
           started: '',
           ended: '',
-          id: uniqid()}),
+          id: uniqid()
+        }),
       })
+
     } else {
       this.setState({
         education: this.state.education.concat({
@@ -110,15 +129,16 @@ class Form extends Component {
 
     const { personal, education, experience } = this.state;
 
-
     return (
       <div className='form-holder'>
         <FormTitle title='Personal Information' />
         <PersonalInfo personal={personal} handleChange={this.handleParentChange} />
         <FormTitle title='Education' />
-        <Education education={education} handleChange={this.handleChange} addBtn={this.onAdd} delBtn={this.onDel}/>
+        <Education education={education} handleChange={this.handleEduChange} addBtn={this.onAdd} delBtn={this.onDel} />
+        <Add name='education' addBtn={this.onAdd} />
         <FormTitle title='Experience' />
-        <Experience experience={experience} handleChange={this.handleChange} addBtn={this.onAdd} delBtn={this.onDel}/>
+        <Experience experience={experience} handleChange={this.handleExpChange} addBtn={this.onAdd} delBtn={this.onDel} />
+        <Add name='experience' addBtn={this.onAdd} />
       </div>
     )
   }
