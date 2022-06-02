@@ -1,34 +1,32 @@
-import React, { Component } from "react";
-import PersonalInfo from "./PersonalInfo";
+import React, { Component } from 'react';
+import PersonalInfo from './PersonalInfo';
 import Education from './Education';
 import Experience from './Experience';
-import FormTitle from "./FormTitle";
-import Add from "./Add"
-import uniqid from "uniqid";
+import FormTitle from './FormTitle';
+import Add from './Add';
+import uniqid from 'uniqid';
 
 class Form extends Component {
-
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       personal: {
-        first: '', 
-        last: '', 
+        first: '',
+        last: '',
         address: '',
         phone: '',
         email: '',
-        description: ''        
+        description: '',
       },
-      
       education: [{
         school: '',
         city: '',
         type: '',
         subject: '',
         started: '',
-        ended: '', 
-        id: uniqid()
+        ended: '',
+        id: uniqid(),
       }],
 
       experience: [{
@@ -36,10 +34,10 @@ class Form extends Component {
         company: '',
         city: '',
         started: '',
-        ended: '',     
-        id: uniqid()
+        ended: '',
+        id: uniqid(),
       }],
-    }
+    };
 
     this.handleParentChange = this.handleParentChange.bind(this);
     this.handleEduChange = this.handleEduChange.bind(this);
@@ -49,21 +47,23 @@ class Form extends Component {
   }
 
   handleParentChange(e) {
-    const value = e.target.value
-    this.setState({
-      personal: {...this.state.personal, [e.target.name]: value}
-    })
+    const value = e.target.value;
+    const name = e.target.name;
+    const personal = { ...this.state.personal }
+    personal[name] = value
+    this.setState({personal})
   }
   
   handleEduChange(e) {
-    const targetId = e.target.closest('.education-form').id
-    const targetInput = e.target.name
+    const targetId = e.target.closest('.education-form').id;
+    const targetInput = e.target.name;
+    const value = e.target.value;
 
     this.setState((prevState) => ({
       education: prevState.education.map((eduEntry) => {
         if (eduEntry.id !== targetId) return eduEntry;
         const eduEntryClone = { ...eduEntry }
-        eduEntryClone[targetInput] = e.target.value;
+        eduEntryClone[targetInput] = value;
         return eduEntryClone
       })
     }))
@@ -72,12 +72,13 @@ class Form extends Component {
   handleExpChange(e) {
     const targetId = e.target.closest('.experience-form').id
     const targetInput = e.target.name
+    const value = e.target.value;
 
     this.setState((prevState) => ({
       experience: prevState.experience.map((expEntry) => {
         if (expEntry.id !== targetId) return expEntry;
         const expEntryClone = { ...expEntry }
-        expEntryClone[targetInput] = e.target.value;
+        expEntryClone[targetInput] = value;
         return expEntryClone
       })
     }))

@@ -48,15 +48,15 @@ button.add {
 button.remove:hover,
 button.add:hover {
  opacity: 1;
- box-shadow: rgb(109, 109, 109) 0 0 2.5px 1px;
+ box-shadow: rgb(180, 180, 180) 0 0 2.5px 1px;
  font-weight: 600;
 }
 
 .app { 
   width: 100%;
+  min-height: 100vw;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   background-color: rgb(209, 230, 251);
 }
@@ -66,7 +66,7 @@ button.add:hover {
   text-align: center;
   padding: 2rem 0;
   background-color: rgb(103, 115, 137);
-  color: rgb(255, 255, 255);
+  color: rgb(209, 230, 251);
 }
 
 .form-holder {
@@ -77,10 +77,13 @@ button.add:hover {
   padding: 1.25rem;
   width: 800px;
   margin: 2rem 0;
-  /* background-color: rgb(232, 232, 233); */
   background-color: rgb(208, 208, 208);
-  box-shadow: rgb(109, 109, 109) 0 0px 8px 2px;
+  box-shadow: rgb(180, 180, 180) 0 0px 8px 2px;
   border-radius: .5rem;
+}
+
+.form-title {
+  color: rgb(88, 117, 146);
 }
 
 .personal-form,
