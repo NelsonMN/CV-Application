@@ -43,7 +43,7 @@ class Form extends Component {
 
     this.handleParentChange = this.handleParentChange.bind(this);
     this.handleEduChange = this.handleEduChange.bind(this);
-    this.handleExpChange = this.handleEduChange.bind(this);
+    this.handleExpChange = this.handleExpChange.bind(this);
     this.onAdd = this.onAdd.bind(this);
     this.onDel = this.onDel.bind(this);
   }
