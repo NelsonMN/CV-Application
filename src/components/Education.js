@@ -18,7 +18,7 @@ class Education extends Component {
               <input type="text" value={education.type} name="type" onChange={handleChange} placeholder="Degree Type" />
               <input type="text" value={education.subject} name="subject" onChange={handleChange} placeholder="Subject" />
               <input type="text" value={education.started} name="started" onChange={handleChange} placeholder="Started" />
-              <input type="text" value={education.ended} name="ended" onChange={handleChange} placeholder="Finished" />
+              <input type="text" value={education.ended} name="ended" onChange={handleChange} placeholder="Ended" />
               <button name="education" id={element.id} onClick={delBtn} className='remove' type='button'>Remove</button>
               <button name="education" onClick={addBtn} className='add' type='submit'>Add</button>
             </form>

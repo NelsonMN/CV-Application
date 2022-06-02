@@ -11,32 +11,52 @@ class Form extends Component {
     super(props)
 
     this.state = {
-      personal: {},
+      personal: {
+        first: '', 
+        last: '', 
+        address: '',
+        phone: '',
+        email: '',
+        description: ''        
+      },
       
-      education: [{id: uniqid()}],
+      education: [{
+        school: '',
+        city: '',
+        type: '',
+        subject: '',
+        started: '',
+        ended: '', 
+        id: uniqid()
+      }],
 
-      experience: [{id: uniqid()}],
+      experience: [{
+        position: '',
+        company: '',
+        city: '',
+        started: '',
+        ended: '',     
+        id: uniqid()
+      }],
     }
-    
+
+    this.handleParentChange = this.handleParentChange.bind(this);
     this.onAdd = this.onAdd.bind(this);
     this.onDel = this.onDel.bind(this);
   }
 
   handleParentChange(e) {
     const value = e.target.value
-    const parent = e.target.parentElement
-    if (parent.classList.contains('personal-form')) {
-      this.setState(
-        {personal: {...this.state.personal, [e.target.name]: value}}
-      )
-    } 
+    this.setState({
+      personal: {...this.state.personal, [e.target.name]: value}
+    })
   }
   
   handleEduChange(e) {
-  const value = e.target.value
-  this.setState(
-    {achievement: {...this.state.achievement, [e.target.name]: value}}
-  )
+    const value = e.target.value
+    this.setState(
+      {achievement: {...this.state.achievement, [e.target.name]: value}}
+    )
   }
 
   handleExpChange(e) {
@@ -50,11 +70,25 @@ class Form extends Component {
     e.preventDefault()
     if (e.target.name === 'experience') {
       this.setState({
-        experience: this.state.experience.concat({id: uniqid()}),
+        experience: this.state.experience.concat({
+          position: '',
+          company: '',
+          city: '',
+          started: '',
+          ended: '',
+          id: uniqid()}),
       })
     } else {
       this.setState({
-        education: this.state.education.concat({id: uniqid()}),
+        education: this.state.education.concat({
+          school: '',
+          city: '',
+          type: '',
+          subject: '',
+          started: '',
+          ended: '',
+          id: uniqid()
+        }),
       })
     }
   }
@@ -80,7 +114,7 @@ class Form extends Component {
     return (
       <div className='form-holder'>
         <FormTitle title='Personal Information' />
-        <PersonalInfo personal={personal} handleChange={this.handleChange} />
+        <PersonalInfo personal={personal} handleChange={this.handleParentChange} />
         <FormTitle title='Education' />
         <Education education={education} handleChange={this.handleChange} addBtn={this.onAdd} delBtn={this.onDel}/>
         <FormTitle title='Experience' />

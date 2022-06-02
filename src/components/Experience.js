@@ -17,7 +17,7 @@ class Experience extends Component {
                     <input type="text" name="company" placeholder="Company" />
                     <input type="text" name="city" placeholder="City" />
                     <input type="text" name="started" placeholder="Started" />
-                    <input type="text" name="finished" placeholder="Finished" />
+                    <input type="text" name="ended" placeholder="Ended" />
                     <button name="experience" id={element.id} onClick={delBtn} className='remove' type='button'>Remove</button>
                     <button name="experience" onClick={addBtn} className='add' type='submit'>Add</button>
                 </form>
