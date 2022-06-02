@@ -1,31 +1,32 @@
 import React, { Component } from "react";
-import uniqid from "uniqid";
 
 class Education extends Component {
-    render() {
 
-      const { education, addBtn, delBtn } = this.props
+  render() {
 
-      if (education.length === 0) {
-        return <button key={uniqid} name="education" onClick={addBtn} className='add' type='submit'>Add</button>
-      } else {
-        return (education.map((achievement) => {
-            return (
-              <form key={achievement.id} className='education-form'>
-                <input type="text" id="schoolInput" placeholder="School Name" />
-                <input type="text" id="schoolCityInput" placeholder="City" />
-                <input type="text" id="degreeInput" placeholder="Degree Type" />
-                <input type="text" id="subjectInput" placeholder="Subject" />
-                <input type="text" id="degreeStartedInput" placeholder="Started" />
-                <input type="text" id="degreeEndedInput" placeholder="Finished" />
-                <button name="education" id={achievement.id} onClick={delBtn} className='remove' type='button'>Remove</button>
-                <button name="education" onClick={addBtn} className='add' type='submit'>Add</button>
-              </form>
-            )
-          })
-        )
-      }
+    const { education, handleChange, addBtn, delBtn } = this.props
+
+    if (education.length === 0) {
+      return <button name="education" onClick={addBtn} className='add' type='submit'>Add</button>
+    } else {
+      return (
+        education.map((element) => {
+          return (
+            <form key={element.id} className='education-form'>
+              <input type="text" value={education.school} name="school" onChange={handleChange} placeholder="School Name" />
+              <input type="text" value={education.city} name="city" onChange={handleChange} placeholder="City" />
+              <input type="text" value={education.type} name="type" onChange={handleChange} placeholder="Degree Type" />
+              <input type="text" value={education.subject} name="subject" onChange={handleChange} placeholder="Subject" />
+              <input type="text" value={education.started} name="started" onChange={handleChange} placeholder="Started" />
+              <input type="text" value={education.ended} name="ended" onChange={handleChange} placeholder="Finished" />
+              <button name="education" id={element.id} onClick={delBtn} className='remove' type='button'>Remove</button>
+              <button name="education" onClick={addBtn} className='add' type='submit'>Add</button>
+            </form>
+          )
+       }))
     }
   }
+}
+
 
 export default Education

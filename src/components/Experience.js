@@ -1,41 +1,29 @@
 import React, { Component } from "react";
-import uniqid from 'uniqid';
 
 class Experience extends Component {
-    //   this.handleChange = this.handleChange.bind(this);
-
-
-    // handleChange(e) {
-    //     const value = e.target.value
-    //     this.setState({
-    //         [e.target.name]: value
-    //     })
-    // }
 
     render() {
-        const { experiences, addBtn, delBtn} = this.props
-        
-        if (experiences.length === 0) {
-            return <button key={uniqid()} name="experience" onClick={addBtn} className='add' type='submit'>Add</button>
+
+        const { experience, addBtn, delBtn} = this.props
+
+        if (experience.length === 0) {
+            return <button name="experience" onClick={addBtn} className='add' type='submit'>Add</button>
         } else {
             return (
-                experiences.map((experience) => {
-                    return (
-                        <form key={experience.id} className='experience-form'>
-                            <input type="text" /*value={position}*/ name="position" placeholder="Title" />
-                            <input type="text" /*value={company}*/ name="company" placeholder="Company" />
-                            <input type="text" /*value={city}*/ name="city" placeholder="City" />
-                            <input type="text" /*value={started}*/ name="started" placeholder="Started" />
-                            <input type="text" /*value={finished}*/ name="finished" placeholder="Finished" />
-                            <button name="experience" id={experience.id} onClick={delBtn} className='remove' type='button'>Remove</button>
-                            <button name="experience" onClick={addBtn} className='add' type='submit'>Add</button>
-                        </form>
-                    )
-                })
-            )
+            experience.map((element) => {
+              return (
+                <form key={element.id} className='experience-form'>
+                    <input type="text" name="position" placeholder="Title" />
+                    <input type="text" name="company" placeholder="Company" />
+                    <input type="text" name="city" placeholder="City" />
+                    <input type="text" name="started" placeholder="Started" />
+                    <input type="text" name="finished" placeholder="Finished" />
+                    <button name="experience" id={element.id} onClick={delBtn} className='remove' type='button'>Remove</button>
+                    <button name="experience" onClick={addBtn} className='add' type='submit'>Add</button>
+                </form>
+                )
+            }))
         }
-
-        
     }
   }
 
