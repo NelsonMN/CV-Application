@@ -4,6 +4,7 @@ import Education from './Education';
 import Experience from './Experience';
 import FormTitle from './FormTitle';
 import Add from './Add';
+import Resume from './Resume';
 import uniqid from 'uniqid';
 
 class Form extends Component {
@@ -128,18 +129,23 @@ class Form extends Component {
   
   render() {
 
-    const { personal, education, experience } = this.state;
+    const { personal, education, experience ,  } = this.state;
 
     return (
-      <div className='form-holder'>
-        <FormTitle title='Personal Information' />
-        <PersonalInfo personal={personal} handleChange={this.handleParentChange} />
-        <FormTitle title='Education' />
-        <Education education={education} handleChange={this.handleEduChange} addBtn={this.onAdd} delBtn={this.onDel} />
-        <Add name='education' addBtn={this.onAdd} />
-        <FormTitle title='Experience' />
-        <Experience experience={experience} handleChange={this.handleExpChange} addBtn={this.onAdd} delBtn={this.onDel} />
-        <Add name='experience' addBtn={this.onAdd} />
+      <div className='program'>
+        <div className='form-holder'>
+          <FormTitle title='Personal Information' />
+          <PersonalInfo personal={personal} handleChange={this.handleParentChange} />
+          <FormTitle title='Education' />
+          <Education education={education} handleChange={this.handleEduChange} addBtn={this.onAdd} delBtn={this.onDel} />
+          <Add name='education' addBtn={this.onAdd} />
+          <FormTitle title='Experience' />
+          <Experience experience={experience} handleChange={this.handleExpChange} addBtn={this.onAdd} delBtn={this.onDel} />
+          <Add name='experience' addBtn={this.onAdd} />
+        </div>
+        <div className='resume'>
+          <Resume state={this.state}/>
+        </div>
       </div>
     )
   }

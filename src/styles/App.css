@@ -54,7 +54,7 @@ button.add:hover {
 
 .app { 
   width: 100%;
-  min-height: 100vw;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -69,17 +69,36 @@ button.add:hover {
   color: rgb(209, 230, 251);
 }
 
+.resume,
 .form-holder {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  justify-self: center;
+  min-width: 8.5in;
+  min-height: 11in;
   padding: 1.25rem;
-  width: 800px;
-  margin: 2rem 0;
-  background-color: rgb(208, 208, 208);
   box-shadow: rgb(180, 180, 180) 0 0px 8px 2px;
   border-radius: .5rem;
+}
+
+.form-holder {
+  background-color: rgb(208, 208, 208);
+  min-width: 8.5in;
+  min-height: 11in;
+  gap: 1rem;
+}
+
+.resume {
+  background-color: white;
+  width: 8.5in;
+  height: 11in;
+}
+
+.program {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-self: center;
+  margin: 2rem 0;
 }
 
 .form-title {
@@ -96,4 +115,11 @@ button.add:hover {
 
 #descriptionInput {
   height: 5rem;
+}
+
+@media (min-width: 1632px) {
+  .program {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
 }
