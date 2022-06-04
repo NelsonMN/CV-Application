@@ -4,7 +4,7 @@ import Education from './Education';
 import Experience from './Experience';
 import FormTitle from './FormTitle';
 import Add from './Add';
-import Resume from './Resume';
+import Resume from '../resume/Resume';
 import uniqid from 'uniqid';
 
 class Form extends Component {
@@ -15,6 +15,7 @@ class Form extends Component {
       personal: {
         first: '',
         last: '',
+        title: '',
         address: '',
         phone: '',
         email: '',
@@ -143,8 +144,9 @@ class Form extends Component {
           <Experience experience={experience} handleChange={this.handleExpChange} addBtn={this.onAdd} delBtn={this.onDel} />
           <Add name='experience' addBtn={this.onAdd} />
         </div>
-        <div className='resume'>
+        <div className='resume-holder'>
           <Resume state={this.state}/>
+          <button>Export as PDF</button>
         </div>
       </div>
     )
