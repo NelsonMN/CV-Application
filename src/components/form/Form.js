@@ -129,11 +129,11 @@ class Form extends Component {
   }
 
   generatePDF() {
+
     const resume = new JsPDF('portrait','px', [816, 1056]);
-    resume.html(document.querySelector('.resume')).then(() => {
-      resume.save('resume.pdf');
-    });
-  }
+    resume.fromHtml(document.querySelector('.resume'))
+    resume.save('resume.pdf');
+    };
 
   
   render() {
