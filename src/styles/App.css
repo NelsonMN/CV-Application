@@ -57,9 +57,9 @@ button.add {
 }
 
 button:hover {
- opacity: 1;
- box-shadow: rgb(180, 180, 180) 0 0 2.5px 1px;
- font-weight: 600;
+  opacity: 1;
+  box-shadow: rgb(180, 180, 180) 0 0 2.5px 1px;
+  font-weight: 600;
 }
 
 .app { 
@@ -176,6 +176,21 @@ button:hover {
 
 .form-title {
   color: rgb(88, 117, 146);
+}
+
+.footer {
+  padding: 1.5rem 0;
+  width: 100%;
+  text-align: center;
+  background-color: rgb(103, 115, 137);
+  transition-duration: .5s;
+}
+
+.footer > a {
+  color: rgb(209, 230, 251);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.125rem;
 }
 
 .personal-form,
