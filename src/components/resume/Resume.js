@@ -1,28 +1,26 @@
 import React, { Component } from 'react';
+import ResumeHeader from './R-Header'
+import ResumeEducation from './R-Education'
 
 class Resume extends Component {
 
     render() {
+
         const { state }  = this.props
+
         return (
             <div className='resume'>
-                <div className='resume-header'>
-                    <h1 className='name-title'>{state.personal.first} {state.personal.last}</h1>
-                    <div className='resume-header-info'>
-                        <ul>
-                            <li><span>Address:</span> {state.personal.address}</li>
-                            <li><span>Phone:</span> {state.personal.phone}</li>
-                        </ul>
-                        <ul>
-                            <li><span>Email:</span> {state.personal.email}</li>
-                            <li><span>Github:</span> {state.personal.github}</li>
-                        </ul>
-                    </div>
-                </div>
+                <ResumeHeader state={state}/>
+
                 <div className='resume-main'>
-                    <div className='resume-education'></div>
+
+                    <div className='resume-education'>
+                        <h4 className='heading'>Education:</h4>    
+                        <ResumeEducation state={state} />
+                    </div>
                     <div className='resume-experience'></div>
                 </div>
+
             </div>
         )
     }

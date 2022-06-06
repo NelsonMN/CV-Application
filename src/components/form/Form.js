@@ -23,7 +23,6 @@ class Form extends Component {
       },
       education: [{
         school: '',
-        city: '',
         type: '',
         subject: '',
         started: '',
@@ -104,7 +103,6 @@ class Form extends Component {
       this.setState({
         education: this.state.education.concat({
           school: '',
-          city: '',
           type: '',
           subject: '',
           started: '',
@@ -130,7 +128,7 @@ class Form extends Component {
   
   render() {
 
-    const { personal, education, experience ,  } = this.state;
+    const { personal, education, experience } = this.state;
 
     return (
       <div className='program'>
