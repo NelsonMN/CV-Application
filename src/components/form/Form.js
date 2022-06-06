@@ -132,7 +132,7 @@ class Form extends Component {
     const resume = new JsPDF('portrait','px', [816, 1056]);
     resume.html(document.querySelector('.resume'), {
       callback: function () {
-        resume.save()
+        resume.save('Resume')
       }
     });
   }
