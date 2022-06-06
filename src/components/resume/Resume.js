@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ResumeHeader from './R-Header'
-import ResumeEducation from './R-Education'
+import ResumeEducation from './R-Education';
 
 class Resume extends Component {
 
@@ -13,11 +13,7 @@ class Resume extends Component {
                 <ResumeHeader state={state}/>
 
                 <div className='resume-main'>
-
-                    <div className='resume-education'>
-                        <h4 className='heading'>Education:</h4>    
-                        <ResumeEducation state={state} />
-                    </div>
+                    <ResumeEducation state={state}/>
                     <div className='resume-experience'></div>
                 </div>
 
