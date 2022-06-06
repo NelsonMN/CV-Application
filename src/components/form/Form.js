@@ -36,6 +36,7 @@ class Form extends Component {
         city: '',
         started: '',
         ended: '',
+        description: '',
         id: uniqid(),
       }],
     };

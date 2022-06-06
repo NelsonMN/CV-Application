@@ -14,11 +14,11 @@ class ResumeHeader extends Component {
                         </ul>
                         <ul>
                             <li><span>Email:</span> {state.personal.email}</li>
-                            <li><span>Github:</span> {state.personal.github}</li>
+                            <li><span>GitHub:</span> {state.personal.github}</li>
                         </ul>
                     </div>
                     <h4 className="heading">Professional Summary:</h4>
-                    <p>{state.personal.description}</p>
+                    <p><em>{state.personal.description}</em></p>
             </div>
         )
     }

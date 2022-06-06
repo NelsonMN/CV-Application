@@ -10,13 +10,11 @@ class ResumeEducationOutput extends Component {
             state.education.map( (element) => {
                 return (
                     <div key={element.id} id={element.id} className='education'>
-                        <div className='education-info'>
+                        <div className='education-title'>
                             <h4>{element.school}</h4>
-                            <p>{element.type} in {element.subject}</p>
+                            <div>{element.started} - {element.ended}</div>
                         </div>
-                        <div className='dates'>
-                            <div className='start'>{element.started} - {element.ended}</div>
-                        </div>
+                        <p>{element.type} in {element.subject}</p>
                     </div>
                 )
             } )
