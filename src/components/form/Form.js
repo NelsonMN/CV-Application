@@ -15,10 +15,10 @@ class Form extends Component {
       personal: {
         first: '',
         last: '',
-        title: '',
         address: '',
         phone: '',
         email: '',
+        github: '',
         description: '',
       },
       education: [{
