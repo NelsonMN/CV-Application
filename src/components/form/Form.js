@@ -5,6 +5,7 @@ import Experience from './Experience';
 import FormTitle from './FormTitle';
 import Add from './Add';
 import Resume from '../resume/Resume';
+import JsPDF from 'jspdf';
 import uniqid from 'uniqid';
 
 class Form extends Component {
@@ -46,6 +47,7 @@ class Form extends Component {
     this.handleExpChange = this.handleExpChange.bind(this);
     this.onAdd = this.onAdd.bind(this);
     this.onDel = this.onDel.bind(this);
+    this.generatePDF = this.generatePDF.bind(this);
   }
 
   handleParentChange(e) {
@@ -126,6 +128,13 @@ class Form extends Component {
     })}
   }
 
+  generatePDF() {
+    const resume = new JsPDF('portrait','px', [816, 1056]);
+    resume.html(document.querySelector('.resume')).then(() => {
+      resume.save('resume.pdf');
+    });
+  }
+
   
   render() {
 
@@ -145,7 +154,7 @@ class Form extends Component {
         </div>
         <div className='resume-holder'>
           <Resume state={this.state}/>
-          <button>Export as PDF</button>
+          <button onClick={this.generatePDF}>Export as PDF</button>
         </div>
       </div>
     )

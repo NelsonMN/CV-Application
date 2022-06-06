@@ -12,12 +12,10 @@ class Resume extends Component {
         return (
             <div className='resume'>
                 <ResumeHeader state={state}/>
-
                 <div className='resume-main'>
                     <ResumeEducation state={state} />
                     <ResumeExperience state={state} />
                 </div>
-
             </div>
         )
     }
