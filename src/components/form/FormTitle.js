@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class FormTitle extends Component {
-    render() {
-        return <h3 className='form-title'>{this.props.title}</h3>
-    }
+const FormTitle = (props) => {
+
+    return <h3 className='form-title'>{props.title}</h3>
 }
 
 export default FormTitle

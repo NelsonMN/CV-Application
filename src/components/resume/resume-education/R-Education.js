@@ -1,18 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ResumeEducationOutput from './R-Education-Output';
 
-class ResumeEducation extends Component {
+const ResumeEducation = (props) => {
 
-    render() {
-        const { state } = this.props
+    const { state } = props
 
-        return (
-            <div className='resume-education'>
-                <h4 className='heading'>Education:</h4>    
-                <ResumeEducationOutput state={state} />
-            </div>
-        )
-    }
+    return (
+        <div className='resume-education'>
+            <h4 className='heading'>Education:</h4>    
+            <ResumeEducationOutput state={state} />
+        </div>
+    )
 }
 
 export default ResumeEducation

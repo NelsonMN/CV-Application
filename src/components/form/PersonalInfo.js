@@ -1,23 +1,20 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class PersonalInfo extends Component {
-   
-    render() {
+const PersonalInfo = (props) => {
 
-        const { handleChange } = this.props
+    const { handleChange } = props
 
-        return (
-            <form className='personal-form'>
-                <input type="text" name="first" onChange={handleChange} placeholder="First name" />
-                <input type="text" name="last" onChange={handleChange} placeholder="Last name" />
-                <input type="text" name="address" onChange={handleChange} placeholder="Address" />
-                <input type="text" name="phone" onChange={handleChange} placeholder="Phone" />
-                <input type="text" name="email" onChange={handleChange} placeholder="Email" />
-                <input type="text" name="github" onChange={handleChange} placeholder="Github" />
-                <textarea type="text" rows="5" name="description" onChange={handleChange} placeholder="Description" />
-            </form>
-        )
-    }
+    return (
+        <form className='personal-form'>
+            <input type="text" name="first" onChange={handleChange} placeholder="First name" />
+            <input type="text" name="last" onChange={handleChange} placeholder="Last name" />
+            <input type="text" name="address" onChange={handleChange} placeholder="Address" />
+            <input type="text" name="phone" onChange={handleChange} placeholder="Phone" />
+            <input type="text" name="email" onChange={handleChange} placeholder="Email" />
+            <input type="text" name="github" onChange={handleChange} placeholder="Github" />
+            <textarea type="text" rows="5" name="description" onChange={handleChange} placeholder="Description" />
+        </form>
+    )
 }
 
 

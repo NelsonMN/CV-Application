@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Add extends Component {
+const Add = (props) => {
 
-    render() {
-        const {addBtn, name} = this.props
+    const {addBtn, name} = props
 
-        return <button name={name} onClick={addBtn} className='add' type='submit'>Add</button>
-    }
+    return <button name={name} onClick={addBtn} className='add' type='submit'>Add</button>
+
 }
 
 export default Add
