@@ -1,18 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ResumeExperienceOutput from './R-Experience-Output';
 
-class ResumeExperience extends Component {
+const ResumeExperience = (props) => {
 
-    render() {
-        const { state } = this.props
+    const { experience } = props
 
-        return (
-            <div className='resume-experience'>
-                <h4 className='heading'>Experience:</h4>    
-                <ResumeExperienceOutput state={state} />
-            </div>
-        )
-    }
+    return (
+        <div className='resume-experience'>
+            <h4 className='heading'>Experience:</h4>    
+            <ResumeExperienceOutput experience={experience} />
+        </div>
+    )
 }
 
 export default ResumeExperience

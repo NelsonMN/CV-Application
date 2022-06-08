@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import PersonalInfo from './PersonalInfo';
 import Education from './Education';
 import Experience from './Experience';
@@ -8,127 +8,105 @@ import Resume from '../resume/Resume';
 import JsPDF from 'jspdf';
 import uniqid from 'uniqid';
 
-class Form extends Component {
-  constructor(props) {
-    super(props);
+const Form = () => {
 
-    this.state = {
-      personal: {
-        first: '',
-        last: '',
-        address: '',
-        phone: '',
-        email: '',
-        github: '',
-        description: '',
-      },
-      education: [{
-        school: '',
-        type: '',
-        subject: '',
-        started: '',
-        ended: '',
-        id: uniqid(),
-      }],
+  const [personal, setPersonal] = useState({
+    first: '',
+    last: '',
+    address: '',
+    phone: '',
+    email: '',
+    github: '',
+    description: '',
+  })
 
-      experience: [{
-        position: '',
-        company: '',
-        city: '',
-        started: '',
-        ended: '',
-        description: '',
-        id: uniqid(),
-      }],
-    };
+  const [education, setEducation] = useState([{
+    school: '',
+    type: '',
+    subject: '',
+    started: '',
+    ended: '',
+    id: uniqid(),
+  }])
 
-    this.handleParentChange = this.handleParentChange.bind(this);
-    this.handleEduChange = this.handleEduChange.bind(this);
-    this.handleExpChange = this.handleExpChange.bind(this);
-    this.onAdd = this.onAdd.bind(this);
-    this.onDel = this.onDel.bind(this);
-    this.generatePDF = this.generatePDF.bind(this);
-  }
+  const [experience, setExperience] = useState([{
+    position: '',
+    company: '',
+    city: '',
+    started: '',
+    ended: '',
+    description: '',
+    id: uniqid()
+  }])
 
-  handleParentChange(e) {
+
+  const handleParentChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
-    const personal = { ...this.state.personal }
-    personal[name] = value
-    this.setState({personal})
+    const personalClone = { ...personal }
+    personalClone[name] = value
+    setPersonal(personalClone)
   }
   
-  handleEduChange(e) {
+  const handleEduChange = (e) => {
     const targetId = e.target.closest('.education-form').id;
     const targetInput = e.target.name;
     const value = e.target.value;
 
-    this.setState((prevState) => ({
-      education: prevState.education.map((eduEntry) => {
+    setEducation(education.map((eduEntry) => {
         if (eduEntry.id !== targetId) return eduEntry;
         const eduEntryClone = { ...eduEntry }
         eduEntryClone[targetInput] = value;
         return eduEntryClone
-      })
-    }))
+      }))
   }
 
-  handleExpChange(e) {
+  const handleExpChange = (e) => {
     const targetId = e.target.closest('.experience-form').id
     const targetInput = e.target.name
     const value = e.target.value;
 
-    this.setState((prevState) => ({
-      experience: prevState.experience.map((expEntry) => {
+   setExperience(experience.map((expEntry) => {
         if (expEntry.id !== targetId) return expEntry;
         const expEntryClone = { ...expEntry }
         expEntryClone[targetInput] = value;
         return expEntryClone
-      })
-    }))
+      }))
   }
   
-  onAdd(e) {
+  const onAdd = (e) => {
     e.preventDefault()
     if (e.target.name === 'experience') {
-      this.setState({
-        experience: this.state.experience.concat({
+      setExperience(experience.concat({
           position: '',
           company: '',
           city: '',
           started: '',
           ended: '',
           id: uniqid()
-        }),
-      })
-
+        }))
     } else {
-      this.setState({
-        education: this.state.education.concat({
+      setEducation(education.concat({
           school: '',
           type: '',
           subject: '',
           started: '',
           ended: '',
           id: uniqid()
-        }),
-      })
+        }))
     }
   }
 
-  onDel(e) {
+  const onDel = (e) => {
     e.preventDefault()
     if (e.target.name === 'experience') {
-      this.setState({
-        experience: this.state.experience.filter(experience => experience.id !== e.target.id)
-      })
+      setExperience(experience.filter(experience => experience.id !== e.target.id))
     } else {
-      this.setState({
-        education: this.state.education.filter(achievement => achievement.id !== e.target.id)
-    })}
-  }
+      setEducation(education.filter(achievement => achievement.id !== e.target.id))
+    }}
 
-  generatePDF() {
+
+  const generatePDF = () => {
     const resume = new JsPDF('portrait','px', [816, 1056]);
     resume.html(document.querySelector('.resume'), {
       callback: function () {
@@ -137,30 +115,24 @@ class Form extends Component {
     });
   }
 
-  
-  render() {
-
-    const { personal, education, experience } = this.state;
-
-    return (
-      <div className='program'>
-        <div className='form-holder'>
-          <FormTitle title='Personal Information' />
-          <PersonalInfo personal={personal} handleChange={this.handleParentChange} />
-          <FormTitle title='Education' />
-          <Education education={education} handleChange={this.handleEduChange} addBtn={this.onAdd} delBtn={this.onDel} />
-          <Add name='education' addBtn={this.onAdd} />
-          <FormTitle title='Experience' />
-          <Experience experience={experience} handleChange={this.handleExpChange} addBtn={this.onAdd} delBtn={this.onDel} />
-          <Add name='experience' addBtn={this.onAdd} />
-        </div>
-        <div className='resume-holder'>
-          <Resume state={this.state}/>
-          <button onClick={this.generatePDF}>Export as PDF</button>
-        </div>
+  return (
+    <div className='program'>
+      <div className='form-holder'>
+        <FormTitle title='Personal Information' />
+        <PersonalInfo personal={personal} handleChange={handleParentChange} />
+        <FormTitle title='Education' />
+        <Education education={education} handleChange={handleEduChange} addBtn={onAdd} delBtn={onDel} />
+        <Add name='education' addBtn={onAdd} />
+        <FormTitle title='Experience' />
+        <Experience experience={experience} handleChange={handleExpChange} addBtn={onAdd} delBtn={onDel} />
+        <Add name='experience' addBtn={onAdd} />
       </div>
-    )
-  }
+      <div className='resume-holder'>
+        <Resume personal={personal} education={education} experience={experience} />
+        <button onClick={generatePDF}>Export as PDF</button>
+      </div>
+    </div>
+  )
 }
 
-export default Form
+export default React.memo(Form)

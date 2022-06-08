@@ -2,23 +2,23 @@ import React from "react";
 
 const ResumeHeader = (props) => {
 
-    const { state }  = props
+    const { personal }  = props
 
     return (
         <div className='resume-header'>
-                <h1 className='name-title'>{state.personal.first} {state.personal.last}</h1>
+                <h1 className='name-title'>{personal.first} {personal.last}</h1>
                 <div className='resume-header-info'>
                     <ul>
-                        <li><span>Address: </span> {state.personal.address}</li>
-                        <li><span>Phone:</span> {state.personal.phone}</li>
+                        <li><span>Address: </span> {personal.address}</li>
+                        <li><span>Phone:</span> {personal.phone}</li>
                     </ul>
                     <ul>
-                        <li><span>Email:</span> {state.personal.email}</li>
-                        <li><span>GitHub:</span> {state.personal.github}</li>
+                        <li><span>Email:</span> {personal.email}</li>
+                        <li><span>GitHub:</span> {personal.github}</li>
                     </ul>
                 </div>
                 <h4 className="heading">Professional Summary:</h4>
-                <p><em>{state.personal.description}</em></p>
+                <p><em>{personal.description}</em></p>
         </div>
     )
 }

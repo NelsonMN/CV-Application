@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Education = (props) => {
+
   const { education, handleChange, delBtn } = props
 
   return (

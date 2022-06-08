@@ -2,10 +2,10 @@ import React from 'react';
 
 const ResumeEducationOutput = (props) => {
         
-    const { state } = props;
+    const { education } = props;
 
     return (
-        state.education.map( (element) => {
+        education.map((element) => {
             return (
                 <div key={element.id} id={element.id} className='education'>
                     <div className='education-title'>

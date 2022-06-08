@@ -5,14 +5,14 @@ import ResumeExperience from './resume-experience/R-Experience';
 
 const Resume = (props) => {
 
-    const { state } = props
+    const { personal, education, experience } = props
 
     return (
         <div className='resume'>
-            <ResumeHeader state={state}/>
+            <ResumeHeader personal={personal}/>
             <div className='resume-main'>
-                <ResumeEducation state={state} />
-                <ResumeExperience state={state} />
+                <ResumeEducation education={education} />
+                <ResumeExperience experience={experience} />
             </div>
         </div>
     )
