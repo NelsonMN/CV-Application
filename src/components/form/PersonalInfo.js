@@ -1,8 +1,6 @@
 import React from 'react'
 
-const PersonalInfo = (props) => {
-
-    const { handleChange } = props
+const PersonalInfo = ({ handleChange }) => {
 
     return (
         <form className='personal-form'>
