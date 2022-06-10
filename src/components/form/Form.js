@@ -119,7 +119,7 @@ const Form = () => {
     <div className='program'>
       <div className='form-holder'>
         <FormTitle title='Personal Information' />
-        <PersonalInfo personal={personal} handleChange={handleParentChange} />
+        <PersonalInfo handleChange={handleParentChange} />
         <FormTitle title='Education' />
         <Education education={education} handleChange={handleEduChange} addBtn={onAdd} delBtn={onDel} />
         <Add name='education' addBtn={onAdd} />
