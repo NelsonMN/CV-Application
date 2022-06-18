@@ -1,4 +1,3 @@
-<!-- ABOUT THE PROJECT -->
 ## Resume Architect
 
 This is a resume building application that allows users to fill out and export their information from a template to PDF. This is my first ReactJS project and it uses functional components and hooks.
@@ -18,7 +17,6 @@ This is a resume building application that allows users to fill out and export t
 * [jspdf](https://parall.ax/products/jspdf)
 
 
-<!-- CONTACT -->
 ## Contact
 
 Nelson M - https://www.linkedin.com/in/nelsonmieszkalski/
