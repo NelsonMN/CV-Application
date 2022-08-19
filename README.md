@@ -3,11 +3,11 @@
 This is a resume building application that allows users to fill out and export their information from a template to PDF. This is my first ReactJS project and it uses functional components and hooks.
 
 ## Screenshot
-
-<img src="src/styles/ScreenShot1.png"
-     alt="Filled Out Resume"
-     style="height: 500px; width: 768.69565; margin: 0 auto;" />
-
+<div align="center">
+     <img src="src/styles/ScreenShot1.png"
+          alt="Filled Out Resume"
+          style="height: 500px; width: 768.69565;" />
+</div>
 ### Built With
 
 * [React.js](https://reactjs.org/)
