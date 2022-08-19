@@ -1,4 +1,4 @@
-## Resume Architect
+<h1 align="center">Resume Architect</h1>
 
 This is a resume building application that allows users to fill out and export their information from a template to PDF. This is my first ReactJS project and it uses functional components and hooks.
 
